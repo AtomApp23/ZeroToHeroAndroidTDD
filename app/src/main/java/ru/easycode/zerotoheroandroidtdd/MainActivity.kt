@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var textView: TextView
     private lateinit var button: Button
-    private var textViewIsVisible = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,29 +25,20 @@ class MainActivity : AppCompatActivity() {
         button = findViewById(R.id.hideButton)
 
         if (savedInstanceState != null) {
-            textView.visibility = if(textViewIsVisible) View.VISIBLE else View.INVISIBLE
+            textView.visibility =  View.INVISIBLE
         }
 
         button.setOnClickListener {
-            textViewIsVisible = false
             textView.visibility = View.INVISIBLE
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
         super.onSaveInstanceState(outState, outPersistentState)
-        outState.putBoolean(VISIBILITY, textViewIsVisible)
+        outState.putBoolean(VISIBILITY, false)
     }
 
-    override fun onRestoreInstanceState(
-        savedInstanceState: Bundle?,
-        persistentState: PersistableBundle?
-    ) {
-        super.onRestoreInstanceState(savedInstanceState, persistentState)
-        if (savedInstanceState != null) {
-            textViewIsVisible = savedInstanceState.getBoolean(VISIBILITY, false)
-        }
-    }
+
 
 
 }
