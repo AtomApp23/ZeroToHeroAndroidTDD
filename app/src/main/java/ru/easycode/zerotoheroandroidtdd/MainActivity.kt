@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         textView = findViewById(R.id.titleTextView)
-        //button = findViewById(R.id.hideButton)
+        button = findViewById(R.id.hideButton)
 
         if (savedInstanceState != null) {
             textView.visibility =  View.INVISIBLE
