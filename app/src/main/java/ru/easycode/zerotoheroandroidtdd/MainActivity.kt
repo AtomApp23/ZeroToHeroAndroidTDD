@@ -9,3 +9,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 }
+
+interface Count {
+    fun increment(number: String): String
+    class Base(private val step: Int) : Count {
+        init {
+            if(step == 0 || step == -1) {
+                throw IllegalStateException()
+            }
+        }
+
+        override fun increment(number: String): String {
+            if (step == -2) {
+                throw IllegalStateException("step should be positive, but was -2")
+            }
+            return (number.toInt() + step).toString()
+        }
+
+    }
+}
